@@ -1,7 +1,7 @@
 # node express typescriptでの最低限の環境を構築（API用を想定）
 
 
-## ![#f03c15]main package version
+## main package version
 - node 12.6.0
 - npm 6.14.8
 - typescript 4.0.5
