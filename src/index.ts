@@ -1,35 +1,38 @@
-import express, { Request, Response, Router, Express, NextFunction } from 'express'
-const app: Express = express()
+import { initializeApp } from "./config/initializer"; //初期化
+import { usersIndex } from "./controller/users";
+const env = process.env;
+import { userCreate, validateStoreCreate } from "./controller/users/create";
 
-// CORSの許可
-app.use((req: Request, res: Response, next: NextFunction) => {
-    res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-    next()
-})
+// import { storesShow, validateStoreShow } from "src/controllers/stores/show";
 
-// interfaceの拡張
-interface RequestPostMessage extends Request {
-    body: {
-        message: string;
-    }
+// import {
+//   storesUpdate,validateStoreCreate
+//   validateStoreUpdate,
+// } from "src/controllers/stores/update";
+// import { storesFindLikeName } from "~/src/controllers/stores/findLikeName";
+// import { storesFindFullText } from "~/src/controllers/stores/findFullText";
+// import { reviewsCreate } from "./controllers/reviews/create";
+// import { validateStoreDelete, storesDelete } from "./controllers/stores/delete";
+
+if (!env.APP_PORT) {
+  process.exit();
 }
 
-// body-parserに基づいた着信リクエストの解析
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+(async () => {
+  const { app, db } = await initializeApp();
+  // fetch all stores
+  // curl -X GET 'http://localhost:8080/api/users'
+  app.get("/api/users", usersIndex(db));
+  // curl -X POST application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
+//   curl -X POST -H "Content-Type: application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
 
-// GetとPostのルーティング
-const router: Router = Router()
-router.get('/api/', (req: Request, res: Response) => {
-    res.send(req.query)
-})
-// ex: curl -X POST -H "Content-Type: application/json" -d '{"message":"success!!"}' localhost:8080/api/post
-router.post('/api/post', (req: RequestPostMessage, res: Response) => {
-    res.send(req.body.message)
-})
-// ルーティングをセット！
-app.use(router)
+  app.post("/api/users", validateStoreCreate, userCreate(db))
 
-// 8000番ポートでAPIサーバ起動（番号は適当な番号にした）
-app.listen(8080, () => { console.log('Example app listening on port 8080 !!') })
+
+  app.listen(env.APP_PORT, () => {
+    console.log(`Node Server started! port ${env.APP_PORT}`);
+  });
+})();
+
+/* これは何に使っているか不明 */
+// export type App = ReturnType<typeof initializeApp>;

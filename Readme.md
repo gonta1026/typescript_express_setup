@@ -1,4 +1,4 @@
-# node express typescriptでの最低限の環境を構築（API用を想定）
+# node express typescript typeORM setup
 
 
 ## main package version
@@ -6,9 +6,14 @@
 - npm 6.14.8
 - typescript 4.0.5
 - express ^4.17.1
+- 5.6.47
 
 ## Reference list
 - [TypeScript + Node.js プロジェクトのはじめかた2020](https://qiita.com/notakaos/items/3bbd2293e2ff286d9f49)
+- [【入門】CLIでプロジェクト構築して使い方を確認](https://www.wakuwakubank.com/posts/725-typeorm-cli-init/)
+- [環境変数の取得](https://www.wakuwakubank.com/posts/662-nodejs-env/)
+- [TypeORMでエンティティを定義する際のガイドライン](https://tech.bitbank.cc/typeorm-entity-guideline/)
+- [TypeORMで本番運用を見据えたマイグレーション](https://qiita.com/jnst/items/9a4c1a9f15b165e0e420)
 
 ## setup:
 ```
@@ -36,3 +41,23 @@ npm run build
 npm run start
 ```
 
+
+### memo
+.envは公開しているが本来は必ず.gitignoreをしてください。
+
+### Type ORM
+
+```
+// 全テーブル削除できる
+npx ts-node node_modules/.bin/typeorm schema:drop
+// userのファイルのマイグレーションファイルを新しく作成
+ts-node node_modules/.bin/typeorm migration:generate - user
+//　マイグレーションを実行
+npx ts-node node_modules/.bin/typeorm migration:run
+```
+
+### mysql comand sample
+
+```
+insert into book (title, userId) VALUES ("titleだー", 25);
+```
