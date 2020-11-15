@@ -8,12 +8,20 @@
 - express ^4.17.1
 - 5.6.47
 
-## Reference list
+## special list
 - [TypeScript + Node.js プロジェクトのはじめかた2020](https://qiita.com/notakaos/items/3bbd2293e2ff286d9f49)
-- [【入門】CLIでプロジェクト構築して使い方を確認](https://www.wakuwakubank.com/posts/725-typeorm-cli-init/)
-- [環境変数の取得](https://www.wakuwakubank.com/posts/662-nodejs-env/)
+
+### TypeORM reference list
 - [TypeORMでエンティティを定義する際のガイドライン](https://tech.bitbank.cc/typeorm-entity-guideline/)
 - [TypeORMで本番運用を見据えたマイグレーション](https://qiita.com/jnst/items/9a4c1a9f15b165e0e420)
+- [【入門】CLIでプロジェクト構築して使い方を確認](https://www.wakuwakubank.com/posts/725-typeorm-cli-init/)
+
+### Jest reference list
+- [Jestの設定](https://doc.ebichu.cc/jest/docs/ja/configuration.html)
+
+### other reference list
+- [環境変数の取得](https://www.wakuwakubank.com/posts/662-nodejs-env/)
+
 
 ## setup:
 ```
@@ -45,8 +53,7 @@ npm run start
 ### memo
 .envは公開しているが本来は必ず.gitignoreをしてください。
 
-### Type ORM
-
+### Type ORM Command
 ```
 // 全テーブル削除できる
 npx ts-node node_modules/.bin/typeorm schema:drop
@@ -57,7 +64,6 @@ npx ts-node node_modules/.bin/typeorm migration:run
 ```
 
 ### mysql comand sample
-
 ```
 insert into book (title, userId) VALUES ("titleだー", 25);
 ```
