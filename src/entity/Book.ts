@@ -17,8 +17,8 @@ export class Book {
   @JoinColumn({ name: 'userId' })
   readonly user?: User;
 
-  @Column('datetime', { default: null })
-  publishedAt: Date | null = null;
+//   @Column('datetime', { default: null })
+//   publishedAt: Date | null = null;
 
   @CreateDateColumn()
   readonly createdAt?: Date;

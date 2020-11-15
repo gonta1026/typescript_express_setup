@@ -11,7 +11,8 @@
         "tsc": "tsc",
         "build": "npm-run-all clean tsc",
         "start": "ts-node src/index.ts",
-        "migration:prod": "ts-node node_modules/.bin/typeorm migration:run"
+        "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
+        "table:drorp": "ts-node node_modules/.bin/typeorm schema:drop"
     },
     "author": "",
     "license": "ISC",
@@ -26,7 +27,8 @@
         "jest": "^26.6.3",
         "npm-run-all": "^4.1.5",
         "rimraf": "^3.0.2",
-        "ts-jest": "^26.4.4"
+        "ts-jest": "^26.4.4",
+        "ts-node": "^3.3.0"
     },
     "dependencies": {
         "typescript": "^3.9.7",
