@@ -10,7 +10,9 @@
         "clean": "rimraf dist/*",
         "tsc": "tsc",
         "build": "npm-run-all clean tsc",
-        "start": "ts-node src/index.ts"
+        "start": "ts-node src/index.ts",
+        "migration:prod": "ts-node node_modules/.bin/typeorm migration:run"
+
     },
     "author": "",
     "license": "ISC",
