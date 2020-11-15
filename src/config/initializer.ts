@@ -18,7 +18,7 @@ const configureServer = (app: Express) => {
     app.use(bodyParser.json());
 };
 
-/* 初期化している？？ */
+/* 初期化 */
 export const initializeApp = async () => {
     const app = express();
     configureServer(app);
@@ -31,6 +31,7 @@ export const initializeApp = async () => {
     return application;
 };
 
+// NOTE どのような処理か不明
 export type App = ReturnType<typeof initializeApp> extends Promise<infer T>
     ? T
     : never;
