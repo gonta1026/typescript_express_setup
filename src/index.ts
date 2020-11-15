@@ -15,23 +15,23 @@ import { userCreate, validateStoreCreate } from "./controller/users/create";
 // import { validateStoreDelete, storesDelete } from "./controllers/stores/delete";
 
 if (!env.APP_PORT) {
-  process.exit();
+    process.exit();
 }
 
 (async () => {
-  const { app, db } = await initializeApp();
-  // fetch all stores
-  // curl -X GET 'http://localhost:8080/api/users'
-  app.get("/api/users", usersIndex(db));
-  // curl -X POST application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
-//   curl -X POST -H "Content-Type: application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
+    const { app, db } = await initializeApp();
+    // fetch all stores
+    // curl -X GET 'http://localhost:8080/api/users'
+    app.get("/api/users", usersIndex(db));
+    // curl -X POST application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
+    //   curl -X POST -H "Content-Type: application/json" -d '{"firstName":"my shop name", "lastName":"Fast Food", "age":25}' "http://localhost:8080/api/users"
 
-  app.post("/api/users", validateStoreCreate, userCreate(db))
+    app.post("/api/users", validateStoreCreate, userCreate(db))
 
 
-  app.listen(env.APP_PORT, () => {
-    console.log(`Node Server started! port ${env.APP_PORT}`);
-  });
+    app.listen(env.APP_PORT, () => {
+        console.log(`Node Server started! port ${env.APP_PORT}`);
+    });
 })();
 
 /* これは何に使っているか不明 */

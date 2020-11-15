@@ -6,5 +6,4 @@ tmp/
 temp/
 .env
 dist
-node_modules
 doc
