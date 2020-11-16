@@ -1,6 +1,5 @@
 import { initializeApp } from "./config/initializer"; //初期化
 import { usersIndex } from "./controller/users";
-const env = process.env;
 import { userCreate, validateStoreCreate } from "./controller/users/create";
 
 // import { storesShow, validateStoreShow } from "src/controllers/stores/show";
@@ -14,7 +13,7 @@ import { userCreate, validateStoreCreate } from "./controller/users/create";
 // import { reviewsCreate } from "./controllers/reviews/create";
 // import { validateStoreDelete, storesDelete } from "./controllers/stores/delete";
 
-if (!env.APP_PORT) {
+if (!process.env.APP_PORT) {
     process.exit();
 }
 
@@ -29,8 +28,8 @@ if (!env.APP_PORT) {
     app.post("/api/users", validateStoreCreate, userCreate(db))
 
 
-    app.listen(env.APP_PORT, () => {
-        console.log(`Node Server started! port ${env.APP_PORT}`);
+    app.listen(process.env.APP_PORT, () => {
+        console.log(`Node Server started! port ${process.env.PORT || 8080}`);
     });
 })();
 
