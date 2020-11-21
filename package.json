@@ -12,7 +12,9 @@
         "build": "npm-run-all clean tsc",
         "start": "ts-node src/index.ts",
         "migration:prod": "ts-node node_modules/.bin/typeorm migration:run",
-        "table:drorp": "ts-node node_modules/.bin/typeorm schema:drop"
+        "table:drorp": "ts-node node_modules/.bin/typeorm schema:drop",
+        "start:production": "node dist/index.js",
+        "postinstall": "npm run build"
     },
     "author": "",
     "license": "ISC",

@@ -58,7 +58,7 @@ npm run start
 // 全テーブル削除できる
 npx ts-node node_modules/.bin/typeorm schema:drop
 // userのファイルのマイグレーションファイルを新しく作成
-ts-node node_modules/.bin/typeorm migration:generate - user
+npx ts-node node_modules/.bin/typeorm migration:generate - user
 //　マイグレーションを実行
 npx ts-node node_modules/.bin/typeorm migration:run
 ```
