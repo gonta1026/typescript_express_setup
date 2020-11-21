@@ -21,7 +21,8 @@
 
 ### other reference list
 - [環境変数の取得](https://www.wakuwakubank.com/posts/662-nodejs-env/)
-
+### node.js、typeScriptのデプロイの参考記事
+- [環境変数の取得](https://stackoverrun.com/ja/q/11910538)
 
 ## setup:
 ```
