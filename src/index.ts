@@ -19,6 +19,10 @@ if (!process.env.APP_PORT) {
 
 (async () => {
     const { app, db } = await initializeApp();
+    app.get("/", (req, res, next): void => {
+        res.send(`<h1>Hello World</h1>`);
+    })
+
     // fetch all stores
     // curl -X GET 'http://localhost:8080/api/users'
     app.get("/api/users", usersIndex(db));
