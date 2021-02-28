@@ -7,3 +7,5 @@ temp/
 .env
 dist
 doc
+docker
+docker-compose.yml
